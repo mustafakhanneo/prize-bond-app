@@ -16,12 +16,14 @@ export function Navbar({ isAuthed }: { isAuthed: boolean }) {
     router.refresh();
   }
 
+  const website_name = process.env.NEXT_PUBLIC_SITE_NAME || "Prize Bond PK";
+
   return (
     <header className="border-b border-slate-200 bg-white">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center gap-2 font-bold text-slate-900">
           <Ticket className="h-6 w-6 text-emerald-600" />
-          <span>Prize Bond Checker</span>
+          <span>{website_name}</span>
         </Link>
         <div className="flex items-center gap-4 text-sm">
           <Link href="/" className="text-slate-600 hover:text-slate-900">
