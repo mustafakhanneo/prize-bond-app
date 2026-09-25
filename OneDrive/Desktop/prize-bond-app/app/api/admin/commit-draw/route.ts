@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { isValidAdminRequest } from "@/lib/admin-auth";
 import { turso } from "@/lib/turso";
 import { DENOMINATIONS, PRIZE_AMOUNT_TABLE } from "@/lib/prize-bonds";
-import type { Denomination, ParsedDrawRecord, PrizePosition } from "@/types";
+import type { Denomination, ParsedDrawRecor, PrizePosition } from "@/types";
 
 /**
  * POST /api/admin/commit-draw
@@ -25,20 +25,13 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const denomination = Number(body?.denomination) as Denomination;
-    const drawNumber = Number(body?.draw_number);
-    const drawDate = String(body?.draw_date ?? "").trim();
-    const records = body?.records as ParsedDrawRecord[] | undefined;
+    const records = body?.records as ParsedDrawRecor[];
     const amountOverrides = (body?.amount_overrides ?? {}) as Partial<Record<PrizePosition, number>>;
 
     if (!DENOMINATIONS.includes(denomination)) {
       return NextResponse.json({ error: "Invalid denomination." }, { status: 400 });
     }
-    if (!Number.isFinite(drawNumber) || drawNumber <= 0) {
-      return NextResponse.json({ error: "Invalid draw number." }, { status: 400 });
-    }
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(drawDate)) {
-      return NextResponse.json({ error: "Draw date must be in YYYY-MM-DD format." }, { status: 400 });
-    }
+
     if (!Array.isArray(records) || records.length === 0) {
       return NextResponse.json({ error: "No records to commit." }, { status: 400 });
     }
@@ -49,12 +42,14 @@ export async function POST(req: NextRequest) {
       const override = amountOverrides[record.prize_position];
       const amount =
         override ?? record.prize_amount_hint ?? fallbackTable[record.prize_position] ?? 0;
+      const draw_number = Number(record?.draw_number);
+      const draw_date = String(record?.draw_date ?? "").trim();
 
       return {
         sql: `INSERT OR IGNORE INTO winning_draws
                 (denomination, draw_number, draw_date, winning_number, prize_position, prize_amount)
               VALUES (?, ?, ?, ?, ?, ?)`,
-        args: [denomination, drawNumber, drawDate, record.winning_number, record.prize_position, amount],
+        args: [denomination, draw_number, draw_date, record.winning_number, record.prize_position, amount],
       };
     });
 
