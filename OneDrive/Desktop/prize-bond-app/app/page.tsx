@@ -14,10 +14,9 @@ import {
 import { BondChecker } from "@/components/bond-checker";
 import { Card, CardContent } from "@/components/ui/card";
 
-const WEBSITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://YOUR-DOMAIN.com";
+const WEBSITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://YOUR-DOMAIN.com";
 
-const SITE_NAME = "Prize Bond Checker";
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "Prize Bond Checker";
 
 export const metadata: Metadata = {
   title: {
