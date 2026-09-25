@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Check prize bonds online by bond number and denomination. Use our prize bond checker to find prize bond results, winning numbers, prize amounts, draw numbers and draw dates.",
+    "Check prize bonds online by bond number and denomination. Use prize bond pk to find prize bond results, winning numbers, prize amounts, draw numbers and dates.",
 
   keywords: [
     "prize bond",
