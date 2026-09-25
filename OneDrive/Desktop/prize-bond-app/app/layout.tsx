@@ -1,0 +1,39 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import "./globals.css";
+import { ToastProvider } from "@/components/ui/toast";
+import { Navbar } from "@/components/navbar";
+import { getCurrentUser } from "@/lib/auth";
+
+export const metadata: Metadata = {
+  title: "Pakistani Prize Bond Checker & Wallet Tracker",
+  description:
+    "Check your Pakistani prize bonds against official CDNS draw results and track your bonds in a personal wallet.",
+};
+
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const user = await getCurrentUser();
+
+  return (
+    <html lang="en">
+      <head>
+        <link
+  rel="icon"
+  href="/icon?<generated>"
+  type="image/<generated>"
+  sizes="<generated>"
+/>
+      </head>
+      <body className="min-h-screen bg-slate-50 antialiased">
+        <ToastProvider>
+          <Navbar isAuthed={!!user} />
+          <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
+          <footer className="mt-16 border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+            For informational purposes only. Always verify results against official CDNS draw
+            lists before claiming a prize.
+          </footer>
+        </ToastProvider>
+      </body>
+    </html>
+  );
+}
