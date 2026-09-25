@@ -23,6 +23,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   type="image/<generated>"
   sizes="<generated>"
 />
+<meta property="og:image" content="<generated>" />
+<meta property="og:image:alt" content="Prize bond checker" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
       </head>
       <body className="min-h-screen bg-slate-50 antialiased">
         <ToastProvider>

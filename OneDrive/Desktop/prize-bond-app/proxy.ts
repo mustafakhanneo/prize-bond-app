@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
  * signature requires the Node.js crypto APIs that aren't available in the
  * default edge runtime.
  */
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const token = req.cookies.get("auth_token")?.value;
 
   if (!token) {

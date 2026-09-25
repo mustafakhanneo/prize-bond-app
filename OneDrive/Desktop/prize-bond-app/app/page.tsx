@@ -14,50 +14,51 @@ import {
 import { BondChecker } from "@/components/bond-checker";
 import { Card, CardContent } from "@/components/ui/card";
 
+const WEBSITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://YOUR-DOMAIN.com";
+
+const SITE_NAME = "Prize Bond Checker";
+
 export const metadata: Metadata = {
   title: {
-    default:
-      "Pakistani Prize Bond Checker – Check Prize Bond Results Online",
-    template: "%s | Pakistani Prize Bond Checker",
+    default: "Prize Bond Checker Online – Check Prize Bond Results",
+    template: "%s | Prize Bond Checker",
   },
 
   description:
-    "Check Pakistani prize bonds online by bond number and denomination. Find winning prize bonds, prize amounts, draw numbers and draw dates from recorded CDNS draw results.",
+    "Check prize bonds online by bond number and denomination. Use our prize bond checker to find prize bond results, winning numbers, prize amounts, draw numbers and draw dates.",
 
   keywords: [
+    "prize bond",
+    "prize bond check",
+    "prize bond check online",
+    "prize bond results",
+    "prize bond checker online",
     "prize bond checker",
     "Pakistan prize bond checker",
-    "prize bond result",
-    "prize bond results Pakistan",
-    "check prize bond",
-    "prize bond number checker",
     "Pakistani prize bond",
+    "prize bond result Pakistan",
+    "prize bond number checker",
+    "prize bond draw results",
     "CDNS prize bond results",
-    "National Savings prize bond",
-    "prize bond draw result",
+    "100 prize bond result",
+    "200 prize bond result",
     "750 prize bond result",
     "1500 prize bond result",
     "25000 prize bond result",
     "40000 prize bond result",
-    "100 prize bond result",
-    "200 prize bond result",
   ],
 
   authors: [
     {
-      name: "Pakistani Prize Bond Checker",
+      name: SITE_NAME,
     },
   ],
 
-  creator:
-    "Pakistani Prize Bond Checker",
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
 
-  publisher:
-    "Pakistani Prize Bond Checker",
-
-  metadataBase: new URL(
-    "https://YOUR-DOMAIN.com"
-  ),
+  metadataBase: new URL(WEBSITE_URL),
 
   alternates: {
     canonical: "/",
@@ -66,21 +67,33 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_PK",
-    url: "https://YOUR-DOMAIN.com/",
-    siteName:
-      "Pakistani Prize Bond Checker",
-    title:
-      "Pakistani Prize Bond Checker – Check Prize Bond Results Online",
+    url: WEBSITE_URL,
+    siteName: SITE_NAME,
+
+    title: "Prize Bond Checker Online – Check Prize Bond Results",
+
     description:
-      "Check Pakistani prize bonds online and find winning bond numbers, prize amounts, draw numbers and draw dates.",
+      "Check Pakistani prize bonds online by bond number. Find prize bond results, winning numbers, prize amounts, draw numbers and draw dates.",
+
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Prize Bond Checker – Check Pakistani Prize Bond Results Online",
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title:
-      "Pakistani Prize Bond Checker",
+
+    title: "Prize Bond Checker Online",
+
     description:
-      "Check Pakistani prize bonds online by bond number and denomination.",
+      "Check prize bonds online and find prize bond results, winning numbers, prize amounts and draw details.",
+
+    images: ["/og-image.png"],
   },
 
   robots: {
@@ -99,76 +112,57 @@ export const metadata: Metadata = {
   category: "finance",
 };
 
-const WEBSITE_URL =
-  "https://YOUR-DOMAIN.com";
-
-const organizationSchema = {
+export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
 
-  name:
-    "Pakistani Prize Bond Checker",
-
+  name: SITE_NAME,
   url: WEBSITE_URL,
 
   logo: `${WEBSITE_URL}/logo.png`,
 
   description:
-    "Online Pakistani prize bond checking and draw result lookup service.",
+    "Prize Bond Checker is an online tool for checking Pakistani prize bonds and viewing available prize bond draw results.",
 };
 
-const websiteSchema = {
+export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
 
-  name:
-    "Pakistani Prize Bond Checker",
-
+  name: SITE_NAME,
   url: WEBSITE_URL,
 
   description:
-    "Check Pakistani prize bond numbers against available draw results.",
+    "Check Pakistani prize bonds online and find available prize bond results, winning numbers, prize amounts and draw information.",
 
-  potentialAction: {
-    "@type": "SearchAction",
-
-    target: {
-      "@type": "EntryPoint",
-
-      urlTemplate:
-        `${WEBSITE_URL}/?bond={search_term_string}`,
-    },
-
-    "query-input":
-      "required name=search_term_string",
-  },
+  inLanguage: "en-PK",
 };
 
-const webPageSchema = {
+export const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
 
-  name:
-    "Pakistani Prize Bond Checker",
-
+  name: "Prize Bond Checker Online",
   url: WEBSITE_URL,
 
   description:
-    "Check Pakistani prize bond numbers and find winning prize bond results.",
+    "Check prize bonds online by entering bond numbers and selecting a denomination. Find available prize bond results, winning numbers, prize amounts and draw details.",
 
   isPartOf: {
     "@type": "WebSite",
-
-    name:
-      "Pakistani Prize Bond Checker",
-
+    name: SITE_NAME,
     url: WEBSITE_URL,
+  },
+
+  about: {
+    "@type": "Thing",
+    name: "Pakistani Prize Bonds",
   },
 
   inLanguage: "en-PK",
 };
 
-const breadcrumbSchema = {
+export const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
 
@@ -182,7 +176,7 @@ const breadcrumbSchema = {
   ],
 };
 
-const faqSchema = {
+export const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
 
@@ -190,36 +184,46 @@ const faqSchema = {
     {
       "@type": "Question",
 
-      name:
-        "How can I check my Pakistani prize bond?",
+      name: "How can I check my prize bond online?",
 
       acceptedAnswer: {
         "@type": "Answer",
 
         text:
-          "Enter your six-digit prize bond number, select the bond denomination and click Check Bonds. The system will compare your number against the draw results available in the database.",
+          "Enter your six-digit prize bond number, select the prize bond denomination and click Check Bonds. The checker compares your number with the prize bond draw results available in the system.",
       },
     },
 
     {
       "@type": "Question",
 
-      name:
-        "Which Pakistani prize bond denominations can I check?",
+      name: "Where can I check Pakistani prize bond results?",
 
       acceptedAnswer: {
         "@type": "Answer",
 
         text:
-          "The checker supports the prize bond denominations configured in the system, including Rs. 100, Rs. 200, Rs. 750, Rs. 1,500, Rs. 25,000 and Rs. 40,000.",
+          "You can use the Prize Bond Checker to check Pakistani prize bond numbers against the available draw results. Enter one or more six-digit bond numbers and select the relevant denomination.",
       },
     },
 
     {
       "@type": "Question",
 
-      name:
-        "Can I check multiple prize bond numbers at once?",
+      name: "Which prize bond denominations can I check?",
+
+      acceptedAnswer: {
+        "@type": "Answer",
+
+        text:
+          "The checker currently supports Rs. 100, Rs. 200, Rs. 750, Rs. 1,500, Rs. 25,000 and Rs. 40,000 prize bonds.",
+      },
+    },
+
+    {
+      "@type": "Question",
+
+      name: "Can I check multiple prize bond numbers online?",
 
       acceptedAnswer: {
         "@type": "Answer",
@@ -232,28 +236,26 @@ const faqSchema = {
     {
       "@type": "Question",
 
-      name:
-        "Where do Pakistani prize bond results come from?",
+      name: "What information is shown for a winning prize bond?",
 
       acceptedAnswer: {
         "@type": "Answer",
 
         text:
-          "The results displayed by this website come from draw data entered into the system. Users should verify winning numbers against the official National Savings/CDNS announcement before making financial decisions.",
+          "When a matching winning number is found, the checker can show the prize position, prize amount, draw number and draw date.",
       },
     },
 
     {
       "@type": "Question",
 
-      name:
-        "What information is shown when a bond wins?",
+      name: "Are the prize bond results official?",
 
       acceptedAnswer: {
         "@type": "Answer",
 
         text:
-          "For a matching winning bond, the checker can display the prize position, prize amount, draw number and draw date.",
+          "The results displayed on this website are based on draw data entered into the system. Users should verify winning numbers with the official National Savings/CDNS announcements before making financial decisions.",
       },
     },
   ],
