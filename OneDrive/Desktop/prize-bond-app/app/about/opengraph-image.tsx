@@ -1,7 +1,5 @@
 import { ImageResponse } from 'next/og'
-import { readFile } from 'node:fs/promises'
-import { join } from 'node:path'
- 
+
 // Image metadata
 export const alt = 'Prize bond Checker'
 export const size = {
@@ -10,10 +8,6 @@ export const size = {
 }
  
 export const contentType = 'image/png'
- 
-const interSemiBold = await readFile(
-  join(process.cwd(), 'assets/Inter-SemiBold.ttf')
-)
  
 // Image generation
 export default async function Image() {
@@ -39,15 +33,7 @@ export default async function Image() {
     {
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.
-      ...size,
-      fonts: [
-        {
-          name: 'Inter',
-          data: interSemiBold,
-          style: 'normal',
-          weight: 400,
-        },
-      ],
+      ...size
     }
   )
 }
