@@ -24,6 +24,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   sizes="<generated>"
 />
 <meta name="google-site-verification" content="bcBPmPxBCrCW21e6a8IrzqmfBsBy7PM6cqPV46g3w7I" />
+<meta name="msvalidate.01" content="32D39459ECC60DB8B84C29317DC629F4" />
 <meta property="og:image" content="<generated>" />
 <meta property="og:image:alt" content="Prize bond checker" />
 <meta property="og:image:type" content="image/png" />
