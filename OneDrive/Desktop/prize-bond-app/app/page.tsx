@@ -369,7 +369,11 @@ export default function HomePage() {
           className="flex h-24 items-center justify-center rounded-xl border border-dashed border-slate-300 bg-white text-sm text-slate-400"
           aria-label="Advertisement"
         >
-          Ad slot
+          <AdsterraBanner 
+        idKey="3f63d3985c80a2f6bd0eb39575de6daf" 
+        width={728} 
+        height={90} 
+      />
         </div>
 
         {/* Interactive checker */}
