@@ -13,6 +13,7 @@ import {
 
 import { BondChecker } from "@/components/bond-checker";
 import { Card, CardContent } from "@/components/ui/card";
+import AdsterraBanner from "@/components/AdsterraBanner";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://YOUR-DOMAIN.com";
 
