@@ -30,7 +30,7 @@ export default function AdsterraBanner({ idKey, width, height }: AdsterraBannerP
       // 2. Create the script that invokes the ad
       const invokeScript = document.createElement('script');
       invokeScript.type = 'text/javascript';
-      invokeScript.src = `https://www.highrevenueformat.com/{idKey}/invoke.js`;
+      invokeScript.src = `https://www.highrevenueformat.com/${idKey}/invoke.js`;
 
       // 3. Append scripts to the reference container
       bannerRef.current.appendChild(configScript);
